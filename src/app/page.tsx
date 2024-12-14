@@ -12,6 +12,14 @@ import {
   BreadcrumbList,
   BreadcrumbPage,
 } from "@/components/ui/breadcrumb"
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card"
 import { LogInIcon } from "lucide-react";
 import Link from "next/link";
 
@@ -67,6 +75,23 @@ export default function Home() {
 
       <section>
         <h1 className="text-3xl font-bold text-center">Posts cadastrados</h1>
+      </section>
+
+      <section className="px-4">
+        <Card className="max-w-lg">
+          <CardHeader>
+            <CardTitle>Título do post</CardTitle>
+            <CardDescription>Autor do post</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <p>Breve descrição do post</p>
+          </CardContent>
+          <CardFooter>
+            <Button>
+              Acessar post
+            </Button>
+          </CardFooter>
+        </Card>
       </section>
     </>
   );
