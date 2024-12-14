@@ -64,6 +64,10 @@ export default function Home() {
           </BreadcrumbList>
         </Breadcrumb>
       </section>
+
+      <section>
+        <h1 className="text-3xl font-bold text-center">Posts cadastrados</h1>
+      </section>
     </>
   );
 }
