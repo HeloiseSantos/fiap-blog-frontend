@@ -92,7 +92,9 @@ export default function NovoPost() {
                             <Textarea placeholder="Descrição do post" value={description} className="w-full p-2 border border-gray-300 rounded mt-1" onChange={(e) => setDescription(e.target.value)} required />
                         </div>
 
-                        <Button type="submit">Cadastrar</Button>
+                        <div className="flex justify-end">
+                            <Button type="submit">Cadastrar</Button>
+                        </div>
                     </form>
                 </section>
             </main>
