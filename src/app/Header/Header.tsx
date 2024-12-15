@@ -8,7 +8,7 @@ import {
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 import Link from "next/link";
-import { LogInIcon } from "lucide-react";
+import { LogInIcon, LogOutIcon } from "lucide-react";
 import { useAuth0 } from "@auth0/auth0-react";
 
 const Header = () => {
@@ -24,8 +24,8 @@ const Header = () => {
 
       {!isLoading && user && (
         <div>
-        Logado como <strong>{ user?.name }</strong>
-      </div>
+          Logado como <strong>{user?.name}</strong>
+        </div>
       )}
 
       <nav className="flex items-center space-x-4">
@@ -52,18 +52,14 @@ const Header = () => {
 
         <div>
           {!isLoading && !user && (
-            <Button
-              onClick={() => loginWithRedirect()}
-            >
+            <Button onClick={() => loginWithRedirect()}>
               <LogInIcon /> Login
             </Button>
           )}
 
           {!isLoading && user && (
-            <Button
-              onClick={() => logout()}
-            >
-              Log Out
+            <Button onClick={() => logout()}>
+              <LogOutIcon /> Log Out
             </Button>
           )}
         </div>
