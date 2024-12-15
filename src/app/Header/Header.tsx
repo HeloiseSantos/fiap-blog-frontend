@@ -14,9 +14,6 @@ import { useAuth0 } from "@auth0/auth0-react";
 const Header = () => {
   const { loginWithRedirect, logout, user, isLoading } = useAuth0();
 
-  console.log("User: ", user)
-  console.log("isLoading: ", isLoading)
-
   return (
     <header className="container mx-auto h-16 border-b border-slate-200 shadow-md flex items-center justify-between px-4">
       <div>
@@ -56,7 +53,6 @@ const Header = () => {
         <div>
           {!isLoading && !user && (
             <Button
-              className="btn btn-primary btn-block"
               onClick={() => loginWithRedirect()}
             >
               <LogInIcon /> Login
@@ -65,7 +61,6 @@ const Header = () => {
 
           {!isLoading && user && (
             <Button
-              className="btn btn-primary btn-block"
               onClick={() => logout()}
             >
               Log Out
