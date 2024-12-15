@@ -12,7 +12,7 @@ import Link from "next/link";
 
 const Header = () => {
   return (
-    <header className="container mx-auto h-16 border-b border-slate-200 shadow-md flex items-center justify-between px-4">
+    <header className="container mx-auto h-16 p-4 border-b border-slate-200 shadow-md flex items-center justify-between">
         <div>
           <Link href="/" legacyBehavior passHref>Blog educacional</Link>
         </div>
