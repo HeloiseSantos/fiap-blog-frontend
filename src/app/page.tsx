@@ -1,3 +1,5 @@
+'use client'
+import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
   NavigationMenu,
@@ -23,7 +25,52 @@ import {
 import { LogInIcon } from "lucide-react";
 import Link from "next/link";
 
+interface Post {
+  id: number;
+  title: string;
+  author: string;
+  description: string;
+  createDate: string;
+  updateDate: string;
+}
+
 export default function Home() {
+  const [posts, setPosts] = useState<Post[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    async function fetchPosts() {
+      try {
+        const response = await fetch("http://localhost:3000/posts");
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+        setPosts(data);
+      } catch (error) {
+        if (error instanceof Error) {
+          setError(error.message);
+        } else {
+          setError("An unknown error occurred");
+        }
+        console.error("Error fetching posts:", error);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchPosts();
+  }, []);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
+  
   return (
     <>
       <section className="container mx-auto h-16 border-b border-slate-400 shadow-md flex items-center justify-between px-4">
@@ -73,25 +120,27 @@ export default function Home() {
         </Breadcrumb>
       </section>
 
-      <section>
+      <section className="mb-10">
         <h1 className="text-3xl font-bold text-center">Posts cadastrados</h1>
       </section>
 
-      <section className="px-4">
-        <Card className="max-w-lg">
-          <CardHeader>
-            <CardTitle>Título do post</CardTitle>
-            <CardDescription>Autor do post</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <p>Breve descrição do post</p>
-          </CardContent>
-          <CardFooter>
-            <Button>
-              Acessar post
-            </Button>
-          </CardFooter>
-        </Card>
+      <section className="px-4 grid grid-cols-3 gap-2">
+        {posts.map((post) => (
+          <Card key={post.id} className="max-w-screen-md">
+            <CardHeader>
+              <CardTitle>{ post.title }</CardTitle>
+              <CardDescription>{ post.author }</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <p className="line-clamp-3">{ post.description }</p>
+            </CardContent>
+            <CardFooter>
+              <Button>
+                Acessar post
+              </Button>
+            </CardFooter>
+          </Card>
+        ))}
       </section>
     </>
   );
