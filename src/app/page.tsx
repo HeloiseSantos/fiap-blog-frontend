@@ -75,7 +75,7 @@ export default function Home() {
     <>
       <header className="container mx-auto h-16 border-b border-slate-200 shadow-md flex items-center justify-between px-4">
         <div>
-          <Link href="/" legacyBehavior passHref>Education Blog</Link>
+          <Link href="/" legacyBehavior passHref>Blog educacional</Link>
         </div>
 
         <nav className="flex items-center space-x-4">
