@@ -44,7 +44,7 @@ export default function Home() {
       try {
         const response = await fetch("https://fiap-blog-backend-latest.onrender.com/posts");
         if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
+          throw new Error(`Erro HTTP! Status: ${response.status}`);
         }
         const data = await response.json();
         setPosts(data);
@@ -52,9 +52,9 @@ export default function Home() {
         if (error instanceof Error) {
           setError(error.message);
         } else {
-          setError("An unknown error occurred");
+          setError("Ocorreu um erro desconhecido!");
         }
-        console.error("Error fetching posts:", error);
+        console.error("Erro ao buscar posts:", error);
       } finally {
         setLoading(false);
       }
@@ -67,8 +67,8 @@ export default function Home() {
     return <div className="flex items-center justify-center content-center h-screen"><Loader2 className="animate-spin" size={48} /></div>;
   }
 
-  if (error) {
-    return <div>Error: {error}</div>;
+  if (!error) {
+    return <div className="flex items-center justify-center content-center h-screen"><p className="border border-slate-200 rounded-lg p-4 m-4">Desculpe, ocorreu um erro ao carregar os posts. Por favor, atualize a página ou tente novamente mais tarde. Erro: {error}</p></div>;
   }
   
   return (
