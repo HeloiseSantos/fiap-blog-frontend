@@ -6,6 +6,17 @@ import { Label } from "@/components/ui/label"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Button } from "@/components/ui/button"
+import Header from '../Header/Header';
+import Footer from '../Footer/Footer';
+import {
+    Breadcrumb,
+    BreadcrumbItem,
+    BreadcrumbLink,
+    BreadcrumbList,
+    BreadcrumbPage,
+    BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb"
+import Link from 'next/link';
 
 export default function NovoPost() {
     const [title, setTitle] = useState('');
@@ -43,27 +54,50 @@ export default function NovoPost() {
     };
 
     return (
-        <div className="container mx-auto p-4">
-            <h2 className="text-3xl font-bold mb-4">Cadastrar Novo Post</h2>
-            {error && <p className="text-red-500 mb-4">{error}</p>}
-            <form onSubmit={handleSubmit}>
-                <div className="mb-4">
-                    <Label htmlFor="title">Título</Label>
-                    <Input type="title" placeholder="Título do post" value={title} className="w-full p-2 border border-gray-300 rounded mt-1" onChange={(e) => setTitle(e.target.value)} required />
-                </div>
+        <>  
+            <Header />
 
-                <div className="mb-4">
-                    <Label htmlFor="author">Autor</Label>
-                    <Input type="author" placeholder="Nome do autor do post" value={author} className="w-full p-2 border border-gray-300 rounded mt-1" onChange={(e) => setAuthor(e.target.value)} required />
-                </div>
+            <main className="mb-10 px-4">
+                <section className="flex items-center mb-10 mt-16 pt-10">
+                    <p className="mr-2">Você está em: </p>
+                    <Breadcrumb>
+                        <BreadcrumbList>
+                        <BreadcrumbLink>
+                            <Link href="/">Posts</Link>
+                        </BreadcrumbLink>
+                            <BreadcrumbSeparator />
+                            <BreadcrumbItem>
+                                <BreadcrumbPage>Cadastrar novo post</BreadcrumbPage>
+                            </BreadcrumbItem>
+                        </BreadcrumbList>
+                    </Breadcrumb>
+                </section>
 
-                <div className="mb-4">
-                    <Label>Descrição</Label>
-                    <Textarea placeholder="Descrição do post" value={description} className="w-full p-2 border border-gray-300 rounded mt-1" onChange={(e) => setDescription(e.target.value)} required />
-                </div>
+                <section>
+                    <h2 className="text-3xl font-bold mb-4">Cadastrar novo post</h2>
+                    {error && <p className="text-red-500 mb-4">{error}</p>}
+                    <form onSubmit={handleSubmit}>
+                        <div className="mb-4">
+                            <Label htmlFor="title">Título</Label>
+                            <Input type="title" placeholder="Título do post" value={title} className="w-full p-2 border border-gray-300 rounded mt-1" onChange={(e) => setTitle(e.target.value)} required />
+                        </div>
 
-                <Button type="submit">Cadastrar</Button>
-            </form>
-        </div>
+                        <div className="mb-4">
+                            <Label htmlFor="author">Autor</Label>
+                            <Input type="author" placeholder="Nome do autor do post" value={author} className="w-full p-2 border border-gray-300 rounded mt-1" onChange={(e) => setAuthor(e.target.value)} required />
+                        </div>
+
+                        <div className="mb-4">
+                            <Label>Descrição</Label>
+                            <Textarea placeholder="Descrição do post" value={description} className="w-full p-2 border border-gray-300 rounded mt-1" onChange={(e) => setDescription(e.target.value)} required />
+                        </div>
+
+                        <Button type="submit">Cadastrar</Button>
+                    </form>
+                </section>
+            </main>
+            
+            <Footer />
+        </>
     );
 }
