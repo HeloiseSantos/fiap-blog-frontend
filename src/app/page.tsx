@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
@@ -6,7 +6,7 @@ import {
   BreadcrumbItem,
   BreadcrumbList,
   BreadcrumbPage,
-} from "@/components/ui/breadcrumb"
+} from "@/components/ui/breadcrumb";
 import {
   Card,
   CardContent,
@@ -14,11 +14,12 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card"
+} from "@/components/ui/card";
 import { Loader2 } from "lucide-react";
 import Header from "./Header/Header";
 import Footer from "./Footer/Footer";
 import { Input } from "@/components/ui/input";
+import { Auth0ProviderWithNavigate } from "./Auth0Provider";
 
 interface Post {
   _id: number;
@@ -38,7 +39,9 @@ export default function Home() {
   useEffect(() => {
     async function fetchPosts() {
       try {
-        const response = await fetch("https://fiap-blog-backend-latest.onrender.com/posts");
+        const response = await fetch(
+          "https://fiap-blog-backend-latest.onrender.com/posts"
+        );
         if (!response.ok) {
           throw new Error(`Erro HTTP! Status: ${response.status}`);
         }
@@ -85,16 +88,28 @@ export default function Home() {
   };
 
   if (loading) {
-    return <div className="flex items-center justify-center content-center h-screen"><Loader2 className="animate-spin" size={48} /></div>;
+    return (
+      <div className="flex items-center justify-center content-center h-screen">
+        <Loader2 className="animate-spin" size={48} />
+      </div>
+    );
   }
 
   if (error) {
-    return <div className="flex items-center justify-center content-center h-screen"><p className="border border-slate-200 rounded-lg p-4 m-4">Desculpe, ocorreu um erro ao carregar os posts. Por favor, atualize a página ou tente novamente mais tarde. Erro: {error}</p></div>;
+    return (
+      <div className="flex items-center justify-center content-center h-screen">
+        <p className="border border-slate-200 rounded-lg p-4 m-4">
+          Desculpe, ocorreu um erro ao carregar os posts. Por favor, atualize a
+          página ou tente novamente mais tarde. Erro: {error}
+        </p>
+      </div>
+    );
   }
-  
+
   return (
-    <div id="root">
-      <Header />
+    <Auth0ProviderWithNavigate>
+      <div id="root">
+        <Header />
 
       <main className="mb-10 px-4">
         <section className="flex items-center mb-10 mt-16 pt-10">
@@ -108,9 +123,9 @@ export default function Home() {
           </Breadcrumb>
         </section>
 
-        <section className="mb-10">
-          <h1 className="text-3xl font-bold">Posts cadastrados</h1>
-        </section>
+          <section className="mb-10">
+            <h1 className="text-3xl font-bold">Posts cadastrados</h1>
+          </section>
 
         <section className="mb-4">
           <div className="flex items-center">
@@ -147,7 +162,8 @@ export default function Home() {
         </section>
       </main>
 
-      <Footer />
-    </div>
+        <Footer />
+      </div>
+    </Auth0ProviderWithNavigate>
   );
 }
