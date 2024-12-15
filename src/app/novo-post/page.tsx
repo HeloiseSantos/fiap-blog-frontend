@@ -22,13 +22,15 @@ export default function NovoPost() {
     const [title, setTitle] = useState('');
     const [author, setAuthor] = useState('');
     const [description, setDescription] = useState('');
+    const [createDate, setCreateDate] = useState('');
+    const [updateDate, setUpdateDate] = useState('');
     const [error, setError] = useState<string | null>(null);
     const router = useRouter();
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         try {
-            const response = await fetch('https://fiap-blog-backend-latest.onrender.com/posts', {
+            const response = await fetch('http://localhost:3001/posts', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -36,7 +38,9 @@ export default function NovoPost() {
                 body: JSON.stringify({ 
                     title, 
                     author, 
-                    description
+                    description,
+                    createDate,
+                    updateDate,
                 }),
             });
             if (!response.ok) {
@@ -90,6 +94,30 @@ export default function NovoPost() {
                         <div className="mb-4">
                             <Label>Descrição</Label>
                             <Textarea placeholder="Descrição do post" value={description} className="w-full p-2 border border-gray-300 rounded mt-1" onChange={(e) => setDescription(e.target.value)} required />
+                        </div>
+
+                        <div className="mb-4">
+                            <Label htmlFor="createDate">Data de criação</Label>
+                            <Input
+                                type="date"
+                                id="createDate"
+                                value={createDate}
+                                onChange={(e) => setCreateDate(e.target.value)}
+                                className="w-full p-2 border border-gray-300 rounded mt-1 cursor-pointer"
+                                required
+                            />
+                        </div>
+
+                        <div className="mb-4">
+                            <Label htmlFor="updateDate">Data de atualização</Label>
+                            <Input
+                                type="date"
+                                id="updateDate"
+                                value={updateDate}
+                                onChange={(e) => setUpdateDate(e.target.value)}
+                                className="w-full p-2 border border-gray-300 rounded mt-1 cursor-pointer"
+                                required
+                            />
                         </div>
 
                         <div className="flex justify-end">

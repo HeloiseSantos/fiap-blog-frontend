@@ -36,7 +36,7 @@ export default function Home() {
   useEffect(() => {
     async function fetchPosts() {
       try {
-        const response = await fetch("https://fiap-blog-backend-latest.onrender.com/posts");
+        const response = await fetch("http://localhost:3001/posts");
         if (!response.ok) {
           throw new Error(`Erro HTTP! Status: ${response.status}`);
         }
