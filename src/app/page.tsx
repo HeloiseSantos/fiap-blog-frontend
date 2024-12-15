@@ -73,7 +73,7 @@ export default function Home() {
   
   return (
     <>
-      <header className="container mx-auto h-16 border-b border-slate-400 shadow-md flex items-center justify-between px-4">
+      <header className="container mx-auto h-16 border-b border-slate-200 shadow-md flex items-center justify-between px-4">
         <div>
           <Link href="/" legacyBehavior passHref>Education Blog</Link>
         </div>
@@ -109,7 +109,7 @@ export default function Home() {
         </nav>
       </header>
 
-      <main className="container mx-4">
+      <main className="container mx-4 mb-10">
         <section className="flex items-center my-10">
           <p className="mr-2">Você está em: </p>
           <Breadcrumb>
@@ -144,6 +144,12 @@ export default function Home() {
           ))}
         </section>
       </main>
+
+      <footer>
+        <div className="container mx-auto p-4 text-center border border-slate-200">
+          <p>© 2024 - Feito por Heloíse Santos e Jonas Moreira - FIAP</p>
+        </div>
+      </footer>
     </>
   );
 }
