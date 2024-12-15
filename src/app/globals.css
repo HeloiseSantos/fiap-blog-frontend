@@ -23,6 +23,7 @@ body {
   footer {
     @apply bg-background border-t border-border text-center p-4;
   }
+  
   :root {
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;
