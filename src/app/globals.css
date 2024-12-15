@@ -21,7 +21,7 @@ body {
   }
 
   footer {
-    @apply bg-background border-t border-border text-center p-4;
+    @apply bg-background border-t border-slate-200 text-center p-4;
   }
   
   :root {
