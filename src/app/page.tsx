@@ -69,7 +69,7 @@ export default function Home() {
     <div id="root">
       <Header />
 
-      <main className="container mx-4 mb-10">
+      <main className="container mx-auto mb-10 p-4">
         <section className="flex items-center my-10">
           <p className="mr-2">Você está em: </p>
           <Breadcrumb>
@@ -85,18 +85,18 @@ export default function Home() {
           <h1 className="text-3xl font-bold">Posts cadastrados</h1>
         </section>
 
-        <section className="grid grid-cols-3 gap-2">
+        <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 p-5">
           {posts.map((post) => (
             <Card key={post.id} className="max-w-screen-md">
               <CardHeader>
-                <CardTitle>{ post.title }</CardTitle>
+                <CardTitle className="truncate">{ post.title }</CardTitle>
                 <CardDescription>{ post.author }</CardDescription>
               </CardHeader>
               <CardContent>
                 <p className="line-clamp-3">{ post.description }</p>
               </CardContent>
               <CardFooter>
-                <Button>
+                <Button className="max-w-full">
                   Acessar post
                 </Button>
               </CardFooter>
