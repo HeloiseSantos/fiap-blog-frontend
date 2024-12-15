@@ -40,9 +40,9 @@ const Header = () => {
                 </Link>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <Link href="/sobre" legacyBehavior passHref>
+                <Link href="/novo-post" legacyBehavior passHref>
                   <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                    Sobre
+                    Novo Post
                   </NavigationMenuLink>
                 </Link>
               </NavigationMenuItem>
