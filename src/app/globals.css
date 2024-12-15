@@ -19,10 +19,6 @@ body {
   main {
     @apply flex-1;
   }
-
-  footer {
-    @apply bg-background border-t border-slate-200 text-center p-4;
-  }
   
   :root {
     --background: 0 0% 100%;
@@ -83,4 +79,12 @@ body {
   * {
     @apply border-border;
   }
+}
+
+header {
+  @apply h-16 p-4 border-b border-slate-200 shadow-md flex items-center justify-between;
+}
+
+footer {
+  @apply bg-background border-t border-slate-200 text-center p-4;
 }
