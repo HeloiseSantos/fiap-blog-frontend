@@ -80,6 +80,10 @@ export default function Home() {
     }
   };
 
+  const handleClearSearch = () => {
+    setSearchTerm('');
+  };
+
   if (loading) {
     return <div className="flex items-center justify-center content-center h-screen"><Loader2 className="animate-spin" size={48} /></div>;
   }
@@ -117,6 +121,8 @@ export default function Home() {
               onChange={(e) => setSearchTerm(e.target.value)}
               className="w-full p-4 border border-gray-300 rounded mr-4"
             />
+
+            <Button variant="secondary" onClick={handleClearSearch} className="mr-4">Limpar</Button>
             <Button onClick={handleSearch}>Buscar</Button>
           </div>
         </section>
