@@ -73,13 +73,12 @@ export default function Home() {
   
   return (
     <>
-    <main>
-      <section className="container mx-auto h-16 border-b border-slate-400 shadow-md flex items-center justify-between px-4">
+      <header className="container mx-auto h-16 border-b border-slate-400 shadow-md flex items-center justify-between px-4">
         <div>
           <Link href="/" legacyBehavior passHref>Education Blog</Link>
         </div>
 
-        <div className="flex items-center space-x-4">
+        <nav className="flex items-center space-x-4">
           <div>
             <NavigationMenu>
               <NavigationMenuList>
@@ -107,43 +106,44 @@ export default function Home() {
               <LogInIcon /> Login
             </Button>
           </div>
-        </div>
-      </section>
+        </nav>
+      </header>
 
-      <section className="flex items-center my-10 mx-4">
-        <p className="mr-2">Você está em: </p>
-        <Breadcrumb>
-          <BreadcrumbList>
-            <BreadcrumbItem>
-              <BreadcrumbPage>Posts</BreadcrumbPage>
-            </BreadcrumbItem>
-          </BreadcrumbList>
-        </Breadcrumb>
-      </section>
+      <main className="container mx-4">
+        <section className="flex items-center my-10">
+          <p className="mr-2">Você está em: </p>
+          <Breadcrumb>
+            <BreadcrumbList>
+              <BreadcrumbItem>
+                <BreadcrumbPage>Posts</BreadcrumbPage>
+              </BreadcrumbItem>
+            </BreadcrumbList>
+          </Breadcrumb>
+        </section>
 
-      <section className="mb-10">
-        <h1 className="text-3xl font-bold mx-4">Posts cadastrados</h1>
-      </section>
+        <section className="mb-10">
+          <h1 className="text-3xl font-bold">Posts cadastrados</h1>
+        </section>
 
-      <section className="mx-4 grid grid-cols-3 gap-2">
-        {posts.map((post) => (
-          <Card key={post.id} className="max-w-screen-md">
-            <CardHeader>
-              <CardTitle>{ post.title }</CardTitle>
-              <CardDescription>{ post.author }</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <p className="line-clamp-3">{ post.description }</p>
-            </CardContent>
-            <CardFooter>
-              <Button>
-                Acessar post
-              </Button>
-            </CardFooter>
-          </Card>
-        ))}
-      </section>
-    </main>
+        <section className="grid grid-cols-3 gap-2">
+          {posts.map((post) => (
+            <Card key={post.id} className="max-w-screen-md">
+              <CardHeader>
+                <CardTitle>{ post.title }</CardTitle>
+                <CardDescription>{ post.author }</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <p className="line-clamp-3">{ post.description }</p>
+              </CardContent>
+              <CardFooter>
+                <Button>
+                  Acessar post
+                </Button>
+              </CardFooter>
+            </Card>
+          ))}
+        </section>
+      </main>
     </>
   );
 }
