@@ -73,6 +73,7 @@ export default function Home() {
   
   return (
     <>
+    <main>
       <section className="container mx-auto h-16 border-b border-slate-400 shadow-md flex items-center justify-between px-4">
         <div>
           <Link href="/" legacyBehavior passHref>Education Blog</Link>
@@ -121,10 +122,10 @@ export default function Home() {
       </section>
 
       <section className="mb-10">
-        <h1 className="text-3xl font-bold text-center">Posts cadastrados</h1>
+        <h1 className="text-3xl font-bold mx-4">Posts cadastrados</h1>
       </section>
 
-      <section className="px-4 grid grid-cols-3 gap-2">
+      <section className="mx-4 grid grid-cols-3 gap-2">
         {posts.map((post) => (
           <Card key={post.id} className="max-w-screen-md">
             <CardHeader>
@@ -142,6 +143,7 @@ export default function Home() {
           </Card>
         ))}
       </section>
+    </main>
     </>
   );
 }
