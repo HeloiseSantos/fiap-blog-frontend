@@ -20,7 +20,7 @@ import Header from "./Header/Header";
 import Footer from "./Footer/Footer";
 
 interface Post {
-  id: number;
+  _id: number;
   title: string;
   author: string;
   description: string;
@@ -87,7 +87,7 @@ export default function Home() {
 
         <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {posts.map((post) => (
-            <Card key={post.id} className="max-w-screen-md">
+            <Card key={post._id} className="max-w-screen-md">
               <CardHeader>
                 <CardTitle className="truncate">{ post.title }</CardTitle>
                 <CardDescription>{ post.author }</CardDescription>
