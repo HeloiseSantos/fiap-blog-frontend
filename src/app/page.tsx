@@ -22,7 +22,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
-import { LogInIcon } from "lucide-react";
+import { Loader2, LogInIcon } from "lucide-react";
 import Link from "next/link";
 
 interface Post {
@@ -64,7 +64,7 @@ export default function Home() {
   }, []);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <div className="flex items-center justify-center content-center h-screen"><Loader2 className="animate-spin" size={48} /></div>;
   }
 
   if (error) {
