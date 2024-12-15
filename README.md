@@ -1,36 +1,78 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Front-end FIAP Blog
 
-## Getting Started
+Este é um projeto desenvolvido para o Tech Challenge da terceira fase do curso de pós graduação em desenvolvimento full stack da universidade FIAP. O mesmo consiste na criação de uma Interface front-end em Next.js para o gerenciamento de um blogging educacional dinâmico, que possibilita aos professores a possibilidade de listar, criar, editar e excluir posts e aos alunos visualizar a lista de posts cadastrados e ler posts específicas escolhidos por eles.
 
-First, run the development server:
+## 🛠️ Tecnologias utilizadas
+
+- [Typescript](https://www.typescriptlang.org/)
+- [React](https://react.dev/)
+- [Next.js](https://nextjs.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Shadcn](https://ui.shadcn.com/)
+- [Lucide React](https://lucide.dev/)
+- [Render ou Vercel (verificar qual utilizaremos)](https://vercel.com/home)
+
+## 💻 Pré-requisitos
+
+Antes de iniciar, verifique se seu computador possui instalado:
+
+- [Node.js](https://nodejs.org/pt);
+
+## 🔧 Instalação
+
+Para executar o front-end do blog em ambiente local, siga estas etapas, utilizando seu terminal preferido:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# Clonar repositório:
+git clone https://github.com/HeloiseSantos/fiap-blog-frontend
+
+# Acessar pasta do projeto
+cd fiap-blog-frontend
+
+# Abrir projeto no editor de código:
+code .
+
+# Instalar dependências
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🚀 Executar projeto localmente
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+# Levantar server local
+npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Com o projeto rodando na porta 3000 [http://localhost:3000/], é possível utilizá-lo de duas formas:
 
-## Learn More
+- Consumindo a API publicada na nuvem [https://fiap-blog-backend-latest.onrender.com];
+- Consumindo a API localmente. 
 
-To learn more about Next.js, take a look at the following resources:
+Para consumir a API via Render, não é necessário realizar nenhuma modificação no projeto, basta rodar localmente e utilizar. 
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Para consumir a API localmente, é necessário realizar o seguinte passo a passo:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+# Clonar repositório back-end
+git clone https://github.com/HeloiseSantos/fiap-blog-backend.git
 
-## Deploy on Vercel
+# Executar o back-end localmente
+Veja intruções para rodar o projeto no próprio README do mesmo.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+# No projeto front-end 
+- Acessar o seguinte diretório src\app\page.tsx;
+- Na linha 39, alterar a URL do método fetch de https://fiap-blog-backend-latest.onrender.com/posts para http://localhost:3000/posts
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🌐 Publicação (Deploy)
+
+A interface do projeto está publicada e disponível para uso no seguinte endereço:
+
+(verificar endereço e substituir este texto pelo link)
+
+## 🧑🏻‍💻👩🏻‍💻 Colaboradores
+
+Grupo 31, composto por:
+
+- Heloíse Silva Santos - https://github.com/HeloiseSantos
+- Jonas de Andrade Zuazo Moreira - https://github.com/jmoreira7
