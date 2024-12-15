@@ -70,7 +70,7 @@ export default function Home() {
       <Header />
 
       <main className="mb-10 px-4">
-        <section className="flex items-center my-10">
+        <section className="flex items-center mb-10 mt-16 pt-10">
           <p className="mr-2">Você está em: </p>
           <Breadcrumb>
             <BreadcrumbList>
