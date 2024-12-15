@@ -89,7 +89,6 @@ export default function Home() {
                     </NavigationMenuLink>
                   </Link>
                 </NavigationMenuItem>
-                
                 <NavigationMenuItem>
                   <Link href="/sobre" legacyBehavior passHref>
                     <NavigationMenuLink className={navigationMenuTriggerStyle()}>
