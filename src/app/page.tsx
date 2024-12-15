@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
@@ -6,7 +6,7 @@ import {
   BreadcrumbItem,
   BreadcrumbList,
   BreadcrumbPage,
-} from "@/components/ui/breadcrumb"
+} from "@/components/ui/breadcrumb";
 import {
   Card,
   CardContent,
@@ -14,10 +14,11 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card"
+} from "@/components/ui/card";
 import { Loader2 } from "lucide-react";
 import Header from "./Header/Header";
 import Footer from "./Footer/Footer";
+import { Auth0ProviderWithNavigate } from "./Auth0Provider";
 
 interface Post {
   id: number;
@@ -36,7 +37,9 @@ export default function Home() {
   useEffect(() => {
     async function fetchPosts() {
       try {
-        const response = await fetch("https://fiap-blog-backend-latest.onrender.com/posts");
+        const response = await fetch(
+          "https://fiap-blog-backend-latest.onrender.com/posts"
+        );
         if (!response.ok) {
           throw new Error(`Erro HTTP! Status: ${response.status}`);
         }
@@ -58,54 +61,65 @@ export default function Home() {
   }, []);
 
   if (loading) {
-    return <div className="flex items-center justify-center content-center h-screen"><Loader2 className="animate-spin" size={48} /></div>;
+    return (
+      <div className="flex items-center justify-center content-center h-screen">
+        <Loader2 className="animate-spin" size={48} />
+      </div>
+    );
   }
 
   if (error) {
-    return <div className="flex items-center justify-center content-center h-screen"><p className="border border-slate-200 rounded-lg p-4 m-4">Desculpe, ocorreu um erro ao carregar os posts. Por favor, atualize a página ou tente novamente mais tarde. Erro: {error}</p></div>;
+    return (
+      <div className="flex items-center justify-center content-center h-screen">
+        <p className="border border-slate-200 rounded-lg p-4 m-4">
+          Desculpe, ocorreu um erro ao carregar os posts. Por favor, atualize a
+          página ou tente novamente mais tarde. Erro: {error}
+        </p>
+      </div>
+    );
   }
-  
+
   return (
-    <div id="root">
-      <Header />
+    <Auth0ProviderWithNavigate>
+      <div id="root">
+        <Header />
 
-      <main className="container mx-auto mb-10 p-4">
-        <section className="flex items-center my-10">
-          <p className="mr-2">Você está em: </p>
-          <Breadcrumb>
-            <BreadcrumbList>
-              <BreadcrumbItem>
-                <BreadcrumbPage>Posts</BreadcrumbPage>
-              </BreadcrumbItem>
-            </BreadcrumbList>
-          </Breadcrumb>
-        </section>
+        <main className="container mx-auto mb-10 p-4">
+          <section className="flex items-center my-10">
+            <p className="mr-2">Você está em: </p>
+            <Breadcrumb>
+              <BreadcrumbList>
+                <BreadcrumbItem>
+                  <BreadcrumbPage>Posts</BreadcrumbPage>
+                </BreadcrumbItem>
+              </BreadcrumbList>
+            </Breadcrumb>
+          </section>
 
-        <section className="mb-10">
-          <h1 className="text-3xl font-bold">Posts cadastrados</h1>
-        </section>
+          <section className="mb-10">
+            <h1 className="text-3xl font-bold">Posts cadastrados</h1>
+          </section>
 
-        <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 p-5">
-          {posts.map((post) => (
-            <Card key={post.id} className="max-w-screen-md">
-              <CardHeader>
-                <CardTitle className="truncate">{ post.title }</CardTitle>
-                <CardDescription>{ post.author }</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <p className="line-clamp-3">{ post.description }</p>
-              </CardContent>
-              <CardFooter>
-                <Button className="max-w-full">
-                  Acessar post
-                </Button>
-              </CardFooter>
-            </Card>
-          ))}
-        </section>
-      </main>
+          <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 p-5">
+            {posts.map((post) => (
+              <Card key={post.id} className="max-w-screen-md">
+                <CardHeader>
+                  <CardTitle className="truncate">{post.title}</CardTitle>
+                  <CardDescription>{post.author}</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <p className="line-clamp-3">{post.description}</p>
+                </CardContent>
+                <CardFooter>
+                  <Button className="max-w-full">Acessar post</Button>
+                </CardFooter>
+              </Card>
+            ))}
+          </section>
+        </main>
 
-      <Footer />
-    </div>
+        <Footer />
+      </div>
+    </Auth0ProviderWithNavigate>
   );
 }
