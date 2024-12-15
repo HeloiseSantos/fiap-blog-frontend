@@ -18,6 +18,7 @@ import {
 import { Loader2 } from "lucide-react";
 import Header from "./Header/Header";
 import Footer from "./Footer/Footer";
+import { Input } from "@/components/ui/input";
 
 interface Post {
   _id: number;
@@ -32,6 +33,7 @@ export default function Home() {
   const [posts, setPosts] = useState<Post[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
     async function fetchPosts() {
@@ -56,6 +58,27 @@ export default function Home() {
 
     fetchPosts();
   }, []);
+
+  const handleSearch = async () => {
+    setLoading(true);
+    try {
+      const response = await fetch(`https://fiap-blog-backend-latest.onrender.com/posts/search?q=${searchTerm}`);
+      if (!response.ok) {
+        throw new Error(`Erro HTTP! Status: ${response.status}`);
+      }
+      const data = await response.json();
+      setPosts(data);
+    } catch (error) {
+      if (error instanceof Error) {
+        setError(error.message);
+      } else {
+        setError("Ocorreu um erro desconhecido!");
+      }
+      console.error("Erro ao buscar posts:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   if (loading) {
     return <div className="flex items-center justify-center content-center h-screen"><Loader2 className="animate-spin" size={48} /></div>;
@@ -83,6 +106,19 @@ export default function Home() {
 
         <section className="mb-10">
           <h1 className="text-3xl font-bold">Posts cadastrados</h1>
+        </section>
+
+        <section className="mb-4">
+          <div className="flex items-center">
+            <Input
+              type="text"
+              placeholder="Digite o título do post que deseja encontrar"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="w-full p-4 border border-gray-300 rounded mr-4"
+            />
+            <Button onClick={handleSearch}>Buscar</Button>
+          </div>
         </section>
 
         <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
