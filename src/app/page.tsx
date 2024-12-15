@@ -2,13 +2,6 @@
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
-  NavigationMenu,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  navigationMenuTriggerStyle,
-} from "@/components/ui/navigation-menu"
-import {
   Breadcrumb,
   BreadcrumbItem,
   BreadcrumbList,
@@ -22,8 +15,9 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
-import { Loader2, LogInIcon } from "lucide-react";
-import Link from "next/link";
+import { Loader2 } from "lucide-react";
+import Header from "./Header/Header";
+import Footer from "./Footer/Footer";
 
 interface Post {
   id: number;
@@ -72,41 +66,8 @@ export default function Home() {
   }
   
   return (
-    <>
-      <header className="container mx-auto h-16 border-b border-slate-200 shadow-md flex items-center justify-between px-4">
-        <div>
-          <Link href="/" legacyBehavior passHref>Blog educacional</Link>
-        </div>
-
-        <nav className="flex items-center space-x-4">
-          <div>
-            <NavigationMenu>
-              <NavigationMenuList>
-                <NavigationMenuItem>
-                  <Link href="/" legacyBehavior passHref>
-                    <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                      Posts
-                    </NavigationMenuLink>
-                  </Link>
-                </NavigationMenuItem>
-                <NavigationMenuItem>
-                  <Link href="/sobre" legacyBehavior passHref>
-                    <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                      Sobre
-                    </NavigationMenuLink>
-                  </Link>
-                </NavigationMenuItem>
-              </NavigationMenuList>
-            </NavigationMenu>
-          </div>
-
-          <div>
-            <Button>
-              <LogInIcon /> Login
-            </Button>
-          </div>
-        </nav>
-      </header>
+    <div id="root">
+      <Header />
 
       <main className="container mx-4 mb-10">
         <section className="flex items-center my-10">
@@ -144,11 +105,7 @@ export default function Home() {
         </section>
       </main>
 
-      <footer>
-        <div className="container mx-auto p-4 text-center border border-slate-200">
-          <p>© 2024 - Feito por Heloíse Santos e Jonas Moreira - FIAP</p>
-        </div>
-      </footer>
-    </>
+      <Footer />
+    </div>
   );
 }
