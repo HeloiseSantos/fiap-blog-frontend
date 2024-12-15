@@ -69,7 +69,7 @@ export default function Home() {
     <div id="root">
       <Header />
 
-      <main className="container mb-10 px-4">
+      <main className="mb-10 px-4">
         <section className="flex items-center my-10">
           <p className="mr-2">Você está em: </p>
           <Breadcrumb>
