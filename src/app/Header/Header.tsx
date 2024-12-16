@@ -13,25 +13,13 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { useState, useEffect } from "react";
 
 const Header = () => {
-  const { loginWithRedirect, logout, user, isLoading, getAccessTokenSilently, isAuthenticated } =
-    useAuth0();
+  const { loginWithRedirect, logout, user, isLoading } = useAuth0();
 
-  const [accessToken, setAccessToken] = useState<string | null>(null);
+  const [roles, setRoles] = useState<string[]>([]);
 
   useEffect(() => {
-    async function fetchAccessToken() {
-      try {
-        const token = await getAccessTokenSilently();
-        setAccessToken(token);
-
-        console.log("Access Token: ", accessToken);
-      } catch (error) {
-        console.error("Erro ao obter o Access Token: ", error);
-      }
-    };
-
-    fetchAccessToken();
-  }, [isAuthenticated, getAccessTokenSilently]);
+    setRoles(user?.["https://localhost:3000/roles"] || []);
+  }, [user]);
 
   return (
     <header className="container mx-auto h-16 border-b border-slate-200 shadow-md flex items-center justify-between px-4">
@@ -58,13 +46,18 @@ const Header = () => {
                   </NavigationMenuLink>
                 </Link>
               </NavigationMenuItem>
-              <NavigationMenuItem>
-                <Link href="/novo-post" legacyBehavior passHref>
-                  <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                    Novo Post
-                  </NavigationMenuLink>
-                </Link>
-              </NavigationMenuItem>
+
+              {roles.includes("Teacher") && (
+                <NavigationMenuItem>
+                  <Link href="/novo-post" legacyBehavior passHref>
+                    <NavigationMenuLink
+                      className={navigationMenuTriggerStyle()}
+                    >
+                      Novo Post
+                    </NavigationMenuLink>
+                  </Link>
+                </NavigationMenuItem>
+              )}
             </NavigationMenuList>
           </NavigationMenu>
         </div>
