@@ -25,6 +25,8 @@ export const Auth0ProviderWithNavigate = ({ children }) => {
       clientId={clientId}
       authorizationParams={{
         redirect_uri: typeof window !== "undefined" ? window.location.origin : "/",
+        audience: "https://api-fiap-blog/",
+        scope: "view:new-post-button",
       }}
       onRedirectCallback={onRedirectCallback}
     >
