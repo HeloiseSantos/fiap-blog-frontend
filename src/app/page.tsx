@@ -180,8 +180,9 @@ export default function Home() {
                 <CardContent>
                   <p className="line-clamp-3">{post.description}</p>
                 </CardContent>
-                <CardFooter>
-                <Button variant="destructive" className="max-w-full mr-4" onClick={() =>handleDeletePost(post._id)}>Excluir</Button>
+                <CardFooter className="flex flex-wrap justify-between">
+                  <Button variant="destructive" className="max-w-full mr-4" onClick={() =>handleDeletePost(post._id)}>Excluir post</Button>
+                  <Button variant="secondary" className="max-w-full mr-4">Editar post</Button>
                   <Button className="max-w-full">Acessar post</Button>
                 </CardFooter>
               </Card>
