@@ -34,7 +34,7 @@ export default function Home() {
   const [posts, setPosts] = useState<Post[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
     async function fetchPosts() {
@@ -65,7 +65,12 @@ export default function Home() {
   const handleSearch = async () => {
     setLoading(true);
     try {
-      const response = await fetch(`https://fiap-blog-backend-latest.onrender.com/posts/search?q=${searchTerm}`);
+      const endpoint = searchTerm
+        ? `https://fiap-blog-backend-latest.onrender.com/posts/search?q=${searchTerm}`
+        : `https://fiap-blog-backend-latest.onrender.com/posts`;
+
+      const response = await fetch(endpoint);
+
       if (!response.ok) {
         throw new Error(`Erro HTTP! Status: ${response.status}`);
       }
@@ -84,7 +89,7 @@ export default function Home() {
   };
 
   const handleClearSearch = () => {
-    setSearchTerm('');
+    setSearchTerm("");
   };
 
   if (loading) {
@@ -111,56 +116,60 @@ export default function Home() {
       <div id="root">
         <Header />
 
-      <main className="mb-10 px-4">
-        <section className="flex items-center mb-10 mt-16 pt-10">
-          <p className="mr-2">Você está em: </p>
-          <Breadcrumb>
-            <BreadcrumbList>
-              <BreadcrumbItem>
-                <BreadcrumbPage>Posts</BreadcrumbPage>
-              </BreadcrumbItem>
-            </BreadcrumbList>
-          </Breadcrumb>
-        </section>
+        <main className="mb-10 px-4">
+          <section className="flex items-center mb-10 mt-16 pt-10">
+            <p className="mr-2">Você está em: </p>
+            <Breadcrumb>
+              <BreadcrumbList>
+                <BreadcrumbItem>
+                  <BreadcrumbPage>Posts</BreadcrumbPage>
+                </BreadcrumbItem>
+              </BreadcrumbList>
+            </Breadcrumb>
+          </section>
 
           <section className="mb-10">
             <h1 className="text-3xl font-bold">Posts cadastrados</h1>
           </section>
 
-        <section className="mb-4">
-          <div className="flex items-center">
-            <Input
-              type="text"
-              placeholder="Digite o título do post que deseja encontrar"
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full p-4 border border-gray-300 rounded mr-4"
-            />
+          <section className="mb-4">
+            <div className="flex items-center">
+              <Input
+                type="text"
+                placeholder="Digite o título do post que deseja encontrar"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="w-full p-4 border border-gray-300 rounded mr-4"
+              />
 
-            <Button variant="secondary" onClick={handleClearSearch} className="mr-4">Limpar</Button>
-            <Button onClick={handleSearch}>Buscar</Button>
-          </div>
-        </section>
+              <Button
+                variant="secondary"
+                onClick={handleClearSearch}
+                className="mr-4"
+              >
+                Limpar
+              </Button>
+              <Button onClick={handleSearch}>Buscar</Button>
+            </div>
+          </section>
 
-        <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {posts.map((post) => (
-            <Card key={post._id} className="max-w-screen-md">
-              <CardHeader>
-                <CardTitle className="truncate">{ post.title }</CardTitle>
-                <CardDescription>{ post.author }</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <p className="line-clamp-3">{ post.description }</p>
-              </CardContent>
-              <CardFooter>
-                <Button className="max-w-full">
-                  Acessar post
-                </Button>
-              </CardFooter>
-            </Card>
-          ))}
-        </section>
-      </main>
+          <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {posts.map((post) => (
+              <Card key={post._id} className="max-w-screen-md">
+                <CardHeader>
+                  <CardTitle className="truncate">{post.title}</CardTitle>
+                  <CardDescription>{post.author}</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <p className="line-clamp-3">{post.description}</p>
+                </CardContent>
+                <CardFooter>
+                  <Button className="max-w-full">Acessar post</Button>
+                </CardFooter>
+              </Card>
+            ))}
+          </section>
+        </main>
 
         <Footer />
       </div>
