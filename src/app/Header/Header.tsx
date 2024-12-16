@@ -22,7 +22,7 @@ const Header = () => {
   }, [user]);
 
   return (
-    <header className="container mx-auto h-16 border-b border-slate-200 shadow-md flex items-center justify-between px-4">
+    <header className="h-16 border-b border-slate-200 shadow-md flex items-center justify-between px-4">
       <div>
         <Link href="/" legacyBehavior passHref>
           Blog educacional

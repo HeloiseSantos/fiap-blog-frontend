@@ -22,7 +22,7 @@ import { Input } from "@/components/ui/input";
 import { Auth0ProviderWithNavigate } from "./Auth0Provider";
 
 interface Post {
-  _id: number;
+  _id: string;
   title: string;
   author: string;
   description: string;
@@ -111,6 +111,23 @@ export default function Home() {
     );
   }
 
+  const handleDeletePost = async (postId: string) => {
+    const confirmed = window.confirm('Você tem certeza que deseja excluir este post?');
+
+    if (!confirmed) {
+      return;
+    }
+
+    try {
+      await fetch(`https://fiap-blog-backend-latest.onrender.com/posts/${postId}`, {
+        method: 'DELETE',
+      });
+      setPosts(posts.filter(post => post._id !== postId));
+    } catch (error) {
+      console.error('Erro ao excluir o post:', error);
+    }
+  };
+
   return (
     <Auth0ProviderWithNavigate>
       <div id="root">
@@ -164,6 +181,7 @@ export default function Home() {
                   <p className="line-clamp-3">{post.description}</p>
                 </CardContent>
                 <CardFooter>
+                <Button variant="destructive" className="max-w-full mr-4" onClick={() =>handleDeletePost(post._id)}>Excluir</Button>
                   <Button className="max-w-full">Acessar post</Button>
                 </CardFooter>
               </Card>
