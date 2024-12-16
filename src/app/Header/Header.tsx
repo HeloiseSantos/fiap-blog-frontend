@@ -1,4 +1,4 @@
-import React, { use } from "react";
+import React from "react";
 import { Button } from "@/components/ui/button";
 import {
   NavigationMenu,
@@ -15,7 +15,7 @@ const Header = () => {
   const { loginWithRedirect, logout, user, isLoading } = useAuth0();
 
   return (
-    <header className="container mx-auto h-16 border-b border-slate-200 shadow-md flex items-center justify-between px-4">
+    <header className="h-16 border-b border-slate-200 shadow-md flex items-center justify-between px-4">
       <div>
         <Link href="/" legacyBehavior passHref>
           Blog educacional
