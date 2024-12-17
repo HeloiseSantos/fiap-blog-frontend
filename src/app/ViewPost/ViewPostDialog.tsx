@@ -55,6 +55,11 @@ const ViewPostDialog: React.FC<ViewPostDialogProps> = ({ postId }) => {
     }
   }, [postId]);
 
+  const formatDate = (dateString: string) => {
+    const options: Intl.DateTimeFormatOptions = { day: '2-digit', month: '2-digit', year: 'numeric' };
+    return new Date(dateString).toLocaleDateString('pt-BR', options);
+  };
+
   return (
     <div>
       <Dialog>
@@ -73,11 +78,11 @@ const ViewPostDialog: React.FC<ViewPostDialogProps> = ({ postId }) => {
             </p>
 
             <p className="mb-4">
-              <b>Data de criação:</b> {createDate}
+              <b>Data de criação:</b> {formatDate(createDate)}
             </p>
 
             <p className="mb-4">
-              <b>Data da última atualização:</b> {updateDate}
+              <b>Data da última atualização:</b> {formatDate(updateDate)}
             </p>
 
             <p>{description}</p>
