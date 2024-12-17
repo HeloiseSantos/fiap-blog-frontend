@@ -10,6 +10,7 @@ import {
 import Link from "next/link";
 import { LogInIcon, LogOutIcon } from "lucide-react";
 import { User, useAuth0 } from "@auth0/auth0-react";
+import NewDialog from "../NewPost/NewDialog";
 
 interface HeaderProps {
   user?: User;
@@ -48,13 +49,7 @@ const Header: React.FC<HeaderProps> = ({ user, roles, isLoading }) => {
 
               {roles?.includes("Teacher") && (
                 <NavigationMenuItem>
-                  <Link href="/novo-post" legacyBehavior passHref>
-                    <NavigationMenuLink
-                      className={navigationMenuTriggerStyle()}
-                    >
-                      Novo Post
-                    </NavigationMenuLink>
-                  </Link>
+                  <NewDialog />
                 </NavigationMenuItem>
               )}
             </NavigationMenuList>
