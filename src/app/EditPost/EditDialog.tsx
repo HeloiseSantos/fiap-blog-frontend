@@ -101,6 +101,7 @@ const EditDialog: React.FC<EditDialogProps> = ({ postId }) => {
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
                 disabled={loading}
+                required
               />
             </div>
             <div>
@@ -111,6 +112,7 @@ const EditDialog: React.FC<EditDialogProps> = ({ postId }) => {
                 onChange={(e) => setDescription(e.target.value)}
                 className="w-full h-64 border rounded-md p-2"
                 disabled={loading}
+                required
               />
             </div>
             <DialogFooter className="flex justify-center w-full mt-4">
@@ -119,7 +121,7 @@ const EditDialog: React.FC<EditDialogProps> = ({ postId }) => {
                 disabled={loading}
                 onClick={() => handleEditPost(postId)}
               >
-                {loading ? "Carregando..." : "Editar"}
+                {loading ? "Carregando..." : "Salvar"}
               </Button>
             </DialogFooter>
           </form>
