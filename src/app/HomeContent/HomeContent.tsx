@@ -172,23 +172,26 @@ const HomeContent = () => {
         </section>
 
         <section className="mb-4">
-          <div className="flex items-center">
+          <div className="flex items-center max-md:flex-col">
             <Input
               type="text"
               placeholder="Digite o título do post que deseja encontrar"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full p-4 border border-gray-300 rounded mr-4"
+              className="w-full p-4 border border-gray-300 rounded mr-4 max-md:mr-0"
             />
 
-            <Button
-              variant="secondary"
-              onClick={handleClearSearch}
-              className="mr-4 hover:bg-gray-200 active:bg-gray-300 transition-colors"
-            >
-              Limpar
-            </Button>
-            <Button onClick={handleSearch}>Buscar</Button>
+            <div className="flex items-center max-md:pt-4 max-md:w-full">
+              <Button
+                variant="secondary"
+                onClick={handleClearSearch}
+                className="mr-4 hover:bg-gray-200 active:bg-gray-300 transition-colors max-md:w-full"
+              >
+                Limpar
+              </Button>
+
+              <Button onClick={handleSearch} className="max-md:w-full">Buscar</Button>
+            </div>
           </div>
         </section>
 
