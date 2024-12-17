@@ -19,7 +19,6 @@ import { Loader2 } from "lucide-react";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import { Input } from "@/components/ui/input";
-import { Auth0ProviderWithNavigate } from "../Auth0Provider";
 import { useAuth0 } from "@auth0/auth0-react";
 
 interface Post {
@@ -32,6 +31,8 @@ interface Post {
 }
 
 const HomeContent = () => {
+  const baseURL = process.env.NEXT_PUBLIC_BASE_URL || "https://localhost:3000";
+
   const { user, isLoading, isAuthenticated } = useAuth0();
 
   const [posts, setPosts] = useState<Post[]>([]);
@@ -41,9 +42,7 @@ const HomeContent = () => {
   const [roles, setRoles] = useState<string[]>([]);
 
   useEffect(() => {
-    if (user?.["https://localhost:3000/roles"]) {
-      setRoles(user["https://localhost:3000/roles"]);
-    }
+      setRoles(user?.[baseURL + "/roles"] || []);
   }, [user, isAuthenticated]);
 
   useEffect(() => {
