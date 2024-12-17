@@ -76,11 +76,21 @@ const HomeContent = () => {
 
       const response = await fetch(endpoint);
 
+      if(searchTerm.length === 0) {
+        alert("Digite um termo para pesquisar!");
+      }
+
       if (!response.ok) {
         throw new Error(`Erro HTTP! Status: ${response.status}`);
       }
+
       const data = await response.json();
       setPosts(data);
+
+      if(data.length === 0) {
+        alert("Nenhum post encontrado com o termo pesquisado!");
+        window.location.reload();
+      }
     } catch (error) {
       if (error instanceof Error) {
         setError(error.message);
