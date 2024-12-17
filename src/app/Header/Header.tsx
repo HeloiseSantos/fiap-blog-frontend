@@ -39,14 +39,6 @@ const Header: React.FC<HeaderProps> = ({ user, roles, isLoading }) => {
         <div>
           <NavigationMenu>
             <NavigationMenuList>
-              <NavigationMenuItem>
-                <Link href="/" legacyBehavior passHref>
-                  <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                    Posts
-                  </NavigationMenuLink>
-                </Link>
-              </NavigationMenuItem>
-
               {roles?.includes("Teacher") && (
                 <NavigationMenuItem>
                   <NewDialog />
