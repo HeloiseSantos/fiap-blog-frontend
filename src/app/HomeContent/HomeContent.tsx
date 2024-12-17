@@ -20,6 +20,7 @@ import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import { Input } from "@/components/ui/input";
 import { useAuth0 } from "@auth0/auth0-react";
+import EditDialog from "../EditPost/EditDialog";
 
 interface Post {
   _id: string;
@@ -42,7 +43,7 @@ const HomeContent = () => {
   const [roles, setRoles] = useState<string[]>([]);
 
   useEffect(() => {
-      setRoles(user?.[baseURL + "/roles"] || []);
+    setRoles(user?.[baseURL + "/roles"] || []);
   }, [user, isAuthenticated]);
 
   useEffect(() => {
@@ -204,11 +205,7 @@ const HomeContent = () => {
                   </Button>
                 )}
 
-                {roles?.includes("Teacher") && (
-                  <Button variant="secondary" className="max-w-full mr-4">
-                    Editar post
-                  </Button>
-                )}
+                {roles?.includes("Teacher") && <EditDialog postId={post._id} />}
                 <Button className="max-w-full">Acessar post</Button>
               </CardFooter>
             </Card>
