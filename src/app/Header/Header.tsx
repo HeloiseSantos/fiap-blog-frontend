@@ -9,17 +9,16 @@ import {
 } from "@/components/ui/navigation-menu";
 import Link from "next/link";
 import { LogInIcon, LogOutIcon } from "lucide-react";
-import { useAuth0 } from "@auth0/auth0-react";
-import { useState, useEffect } from "react";
+import { User, useAuth0 } from "@auth0/auth0-react";
 
-const Header = () => {
-  const { loginWithRedirect, logout, user, isLoading } = useAuth0();
+interface HeaderProps {
+  user?: User;
+  roles: string[];
+  isLoading: boolean;
+}
 
-  const [roles, setRoles] = useState<string[]>([]);
-
-  useEffect(() => {
-    setRoles(user?.["https://localhost:3000/roles"] || []);
-  }, [user]);
+const Header: React.FC<HeaderProps> = ({ user, roles, isLoading }) => {
+  const { loginWithRedirect, logout } = useAuth0();
 
   return (
     <header className="h-16 border-b border-slate-200 shadow-md flex items-center justify-between px-4">
