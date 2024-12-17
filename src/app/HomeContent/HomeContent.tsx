@@ -2,12 +2,6 @@ import React from "react";
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbList,
-  BreadcrumbPage,
-} from "@/components/ui/breadcrumb";
-import {
   Card,
   CardContent,
   CardDescription,
@@ -150,14 +144,7 @@ const HomeContent = () => {
 
       <main className="mb-10 px-4">
         <section className="flex items-center mb-10 mt-16 pt-10">
-          <p className="mr-2">Você está em: </p>
-          <Breadcrumb>
-            <BreadcrumbList>
-              <BreadcrumbItem>
-                <BreadcrumbPage>Posts</BreadcrumbPage>
-              </BreadcrumbItem>
-            </BreadcrumbList>
-          </Breadcrumb>
+
         </section>
 
         <section className="mb-10">

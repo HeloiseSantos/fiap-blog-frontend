@@ -3,9 +3,7 @@ import { Button } from "@/components/ui/button";
 import {
   NavigationMenu,
   NavigationMenuItem,
-  NavigationMenuLink,
   NavigationMenuList,
-  navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 import Link from "next/link";
 import { LogInIcon, LogOutIcon } from "lucide-react";
