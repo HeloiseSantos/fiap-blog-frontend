@@ -1,14 +1,18 @@
 import React from "react";
-import { Auth0Provider } from "@auth0/auth0-react";
+import { AppState, Auth0Provider } from "@auth0/auth0-react";
 import { useRouter } from "next/navigation";
 
-export const Auth0ProviderWithNavigate = ({ children }) => {
+interface Auth0ProviderWithNavigateProps {
+  children: React.ReactNode;
+}
+
+export const Auth0ProviderWithNavigate = ({ children }: Auth0ProviderWithNavigateProps) => {
   const router = useRouter();
 
   const domain = process.env.NEXT_PUBLIC_AUTH0_DOMAIN;
   const clientId = process.env.NEXT_PUBLIC_AUTH0_CLIENT_ID;
 
-  const onRedirectCallback = (appState) => {
+  const onRedirectCallback = (appState?:AppState) => {
     router.push(appState?.returnTo || "/");
   };
 
