@@ -15,14 +15,6 @@ interface ViewPostDialogProps {
   postId: string;
 }
 
-interface Post {
-  title: String;
-  author: String;
-  description: String;
-  createDate: String;
-  updateDate: String;
-}
-
 const ViewPostDialog: React.FC<ViewPostDialogProps> = ({ postId }) => {
   const [title, setTitle] = useState<string>("");
   const [author, setAuthor] = useState<string>("");

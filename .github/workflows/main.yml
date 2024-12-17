@@ -1,0 +1,33 @@
+name: CI/CD for FIAP Blog Frontend
+
+on:
+  push:
+    branches:
+      - "master"
+      - "ci-cd"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    env:
+      DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+      DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Build and Push Docker Image
+        run: |
+          docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+          docker build -t $DOCKER_USERNAME/fiap-blog-frontend:latest .
+          docker push $DOCKER_USERNAME/fiap-blog-frontend:latest

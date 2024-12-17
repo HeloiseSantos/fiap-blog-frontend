@@ -45,7 +45,7 @@ const HomeContent = () => {
 
   useEffect(() => {
     setRoles(user?.[baseURL + "/roles"] || []);
-  }, [user, isAuthenticated]);
+  }, [user, isAuthenticated, baseURL]);
 
   useEffect(() => {
     async function fetchPosts() {
