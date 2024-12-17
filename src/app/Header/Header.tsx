@@ -42,7 +42,7 @@ const Header = () => {
               <NavigationMenuItem>
                 <Link href="/novo-post" legacyBehavior passHref>
                   <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                    Novo Post
+                    Cadastrar novo post
                   </NavigationMenuLink>
                 </Link>
               </NavigationMenuItem>
