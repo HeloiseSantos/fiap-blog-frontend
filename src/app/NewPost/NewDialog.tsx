@@ -38,10 +38,13 @@ const NewDialog = () => {
                     updateDate,
                 }),
             });
+
             if (!response.ok) {
                 throw new Error(`Erro HTTP! Status: ${response.status}`);
             }
+
             alert("Post cadastrado com sucesso!");
+            
             window.location.reload();
         } catch (error) {
             if (error instanceof Error) {

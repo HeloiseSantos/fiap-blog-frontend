@@ -38,10 +38,13 @@ const EditDialog: React.FC<EditDialogProps> = ({ postId }) => {
         const response = await fetch(
           `https://fiap-blog-backend-latest.onrender.com/posts/${postId}`
         );
+
         const post = await response.json();
+
         setTitle(post.title);
         setDescription(post.description);
         setUpdateDate(post.updateDate);
+
         setLoading(false);
       } catch (error) {
         console.error("Erro ao recuperar o post:", error);
@@ -57,6 +60,7 @@ const EditDialog: React.FC<EditDialogProps> = ({ postId }) => {
   const handleEditPost = async (postId: string) => {
     try {
       setLoading(true);
+
       const response = await fetch(
         `https://fiap-blog-backend-latest.onrender.com/posts/${postId}`,
         {
@@ -72,15 +76,14 @@ const EditDialog: React.FC<EditDialogProps> = ({ postId }) => {
         throw new Error("Erro ao editar o post");
       }
 
-      const updatedPost = await response.json();
-
       alert("Post editado com sucesso!");
+
       window.location.reload();
     } catch (error) {
       if (error instanceof Error) {
         setError(error.message);
     } else {
-        setError('Ocorreu um erro desconhecido!');
+      setError('Ocorreu um erro desconhecido!');
     }
       console.error("Erro ao editar o post:", error);
     }
@@ -105,6 +108,7 @@ const EditDialog: React.FC<EditDialogProps> = ({ postId }) => {
             <DialogTitle className="text-2xl">Editar Post</DialogTitle>
           </DialogHeader>
 
+          {error && <p className="text-red-500 mb-4">{error}</p>}
           <form className="space-y-6">
             <div className="mb-4">
               <Label htmlFor="Título">Título</Label>

@@ -35,12 +35,15 @@ const ViewPostDialog: React.FC<ViewPostDialogProps> = ({ postId }) => {
         const response = await fetch(
           `https://fiap-blog-backend-latest.onrender.com/posts/${postId}`
         );
+
         const post = await response.json();
+
         setTitle(post.title);
         setAuthor(post.author);
         setDescription(post.description);
         setCreateDate(post.createDate);
         setUpdateDate(post.updateDate);
+        
         setLoading(false);
       } catch (error) {
         console.error("Erro ao recuperar o post:", error);

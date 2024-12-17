@@ -47,10 +47,13 @@ const HomeContent = () => {
         const response = await fetch(
           "https://fiap-blog-backend-latest.onrender.com/posts"
         );
+
         if (!response.ok) {
           throw new Error(`Erro HTTP! Status: ${response.status}`);
         }
+
         const data = await response.json();
+
         setPosts(data);
       } catch (error) {
         if (error instanceof Error) {
@@ -89,6 +92,7 @@ const HomeContent = () => {
 
       if(data.length === 0) {
         alert("Nenhum post encontrado com o termo pesquisado!");
+
         window.location.reload();
       }
     } catch (error) {
@@ -97,6 +101,7 @@ const HomeContent = () => {
       } else {
         setError("Ocorreu um erro desconhecido!");
       }
+
       console.error("Erro ao buscar posts:", error);
     } finally {
       setLoading(false);
@@ -142,8 +147,11 @@ const HomeContent = () => {
           method: "DELETE",
         }
       );
+
       setPosts(posts.filter((post) => post._id !== postId));
+
       alert("Post excluído com sucesso!");
+
       window.location.reload();
     } catch (error) {
       console.error("Erro ao excluir o post:", error);
@@ -191,9 +199,11 @@ const HomeContent = () => {
                 <CardTitle className="truncate">{post.title}</CardTitle>
                 <CardDescription>{post.author}</CardDescription>
               </CardHeader>
+
               <CardContent>
                 <p className="line-clamp-3">{post.description}</p>
               </CardContent>
+
               <CardFooter className="flex flex-wrap justify-between">
                 {roles?.includes("Teacher") && (
                   <Button
@@ -206,13 +216,13 @@ const HomeContent = () => {
                 )}
 
                 {roles?.includes("Teacher") && <EditDialog postId={post._id} />}
+
                 <ViewPostDialog postId={post._id} />
               </CardFooter>
             </Card>
           ))}
         </section>
       </main>
-
       <Footer />
     </div>
   );
