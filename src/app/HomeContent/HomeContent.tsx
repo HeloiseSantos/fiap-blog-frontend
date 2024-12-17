@@ -177,7 +177,7 @@ const HomeContent = () => {
             <Button
               variant="secondary"
               onClick={handleClearSearch}
-              className="mr-4"
+              className="mr-4 hover:bg-gray-200 active:bg-gray-300 transition-colors"
             >
               Limpar
             </Button>
