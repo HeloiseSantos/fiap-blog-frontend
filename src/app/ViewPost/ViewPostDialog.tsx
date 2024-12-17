@@ -57,7 +57,7 @@ const ViewPostDialog: React.FC<ViewPostDialogProps> = ({ postId }) => {
     <div>
       <Dialog>
         <DialogTrigger asChild>
-          <Button className="max-w-full mr-4">Acessar post</Button>
+          <Button className="max-w-full mr-4 max-lg:mr-0 max-lg:mb-4">Ler post</Button>
         </DialogTrigger>
 
         <DialogContent className="max-w-screen-lg w-full">

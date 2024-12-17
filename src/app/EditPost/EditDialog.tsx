@@ -90,8 +90,8 @@ const EditDialog: React.FC<EditDialogProps> = ({ postId }) => {
     <div>
       <Dialog>
         <DialogTrigger asChild>
-          <Button variant="secondary" className="max-w-full mr-4 hover:bg-gray-200 active:bg-gray-300 transition-colors">
-            Editar post
+          <Button variant="secondary" className="max-w-full mr-4 hover:bg-gray-200 active:bg-gray-300 transition-colors max-lg:mr-0 max-lg:mb-4">
+            Editar
           </Button>
         </DialogTrigger>
 
