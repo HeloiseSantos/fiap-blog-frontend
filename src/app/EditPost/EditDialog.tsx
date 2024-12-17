@@ -29,6 +29,7 @@ const EditDialog: React.FC<EditDialogProps> = ({ postId }) => {
   const [title, setTitle] = useState<string>("");
   const [description, setDescription] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchPost = async () => {
@@ -70,11 +71,15 @@ const EditDialog: React.FC<EditDialogProps> = ({ postId }) => {
       }
 
       const updatedPost = await response.json();
-      console.log("Post editado com sucesso:", updatedPost);
 
       alert("Post editado com sucesso!");
       window.location.reload();
     } catch (error) {
+      if (error instanceof Error) {
+        setError(error.message);
+    } else {
+        setError('Ocorreu um erro desconhecido!');
+    }
       console.error("Erro ao editar o post:", error);
     }
   };
