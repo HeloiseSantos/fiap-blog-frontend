@@ -143,6 +143,8 @@ const HomeContent = () => {
         }
       );
       setPosts(posts.filter((post) => post._id !== postId));
+      alert("Post excluído com sucesso!");
+      window.location.reload();
     } catch (error) {
       console.error("Erro ao excluir o post:", error);
     }
