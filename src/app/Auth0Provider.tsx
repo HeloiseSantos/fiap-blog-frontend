@@ -9,8 +9,8 @@ interface Auth0ProviderWithNavigateProps {
 export const Auth0ProviderWithNavigate = ({ children }: Auth0ProviderWithNavigateProps) => {
   const router = useRouter();
 
-  const domain = process.env.NEXT_PUBLIC_AUTH0_DOMAIN;
-  const clientId = process.env.NEXT_PUBLIC_AUTH0_CLIENT_ID;
+  const domain = "dev-vzb0dhm7zcb5paj1.us.auth0.com";
+  const clientId = "VmVzjCj0B98h6pqbjfSMgcL99u4Eff5O";
 
   const onRedirectCallback = (appState?:AppState) => {
     router.push(appState?.returnTo || "/");
