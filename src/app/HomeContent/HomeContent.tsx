@@ -41,7 +41,9 @@ const HomeContent = () => {
   const [roles, setRoles] = useState<string[]>([]);
 
   useEffect(() => {
-    setRoles(user?.["https://localhost:3000/roles"] || []);
+    if (user?.["https://localhost:3000/roles"]) {
+      setRoles(user["https://localhost:3000/roles"]);
+    }
   }, [user, isAuthenticated]);
 
   useEffect(() => {
@@ -193,7 +195,7 @@ const HomeContent = () => {
                 <p className="line-clamp-3">{post.description}</p>
               </CardContent>
               <CardFooter className="flex flex-wrap justify-between">
-                {roles.includes("Teacher") && (
+                {roles?.includes("Teacher") && (
                   <Button
                     variant="destructive"
                     className="max-w-full mr-4"
@@ -203,7 +205,7 @@ const HomeContent = () => {
                   </Button>
                 )}
 
-                {roles.includes("Teacher") && (
+                {roles?.includes("Teacher") && (
                   <Button variant="secondary" className="max-w-full mr-4">
                     Editar post
                   </Button>

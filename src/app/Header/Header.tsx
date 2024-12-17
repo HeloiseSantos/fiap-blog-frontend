@@ -46,7 +46,7 @@ const Header: React.FC<HeaderProps> = ({ user, roles, isLoading }) => {
                 </Link>
               </NavigationMenuItem>
 
-              {roles.includes("Teacher") && (
+              {roles?.includes("Teacher") && (
                 <NavigationMenuItem>
                   <Link href="/novo-post" legacyBehavior passHref>
                     <NavigationMenuLink
