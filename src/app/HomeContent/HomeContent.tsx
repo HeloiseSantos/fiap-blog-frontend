@@ -101,7 +101,7 @@ const HomeContent = () => {
     setSearchTerm("");
   };
 
-  if (loading) {
+  if (loading || isLoading) {
     return (
       <div className="flex items-center justify-center content-center h-screen">
         <Loader2 className="animate-spin" size={48} />
