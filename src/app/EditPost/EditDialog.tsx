@@ -28,6 +28,7 @@ interface Post {
 const EditDialog: React.FC<EditDialogProps> = ({ postId }) => {
   const [title, setTitle] = useState<string>("");
   const [description, setDescription] = useState<string>("");
+  const [updateDate, setUpdateDate] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -40,6 +41,7 @@ const EditDialog: React.FC<EditDialogProps> = ({ postId }) => {
         const post = await response.json();
         setTitle(post.title);
         setDescription(post.description);
+        setUpdateDate(post.updateDate);
         setLoading(false);
       } catch (error) {
         console.error("Erro ao recuperar o post:", error);
@@ -62,7 +64,7 @@ const EditDialog: React.FC<EditDialogProps> = ({ postId }) => {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ title, description }),
+          body: JSON.stringify({ title, description, updateDate }),
         }
       );
 
@@ -84,6 +86,11 @@ const EditDialog: React.FC<EditDialogProps> = ({ postId }) => {
     }
   };
 
+  const formatDate = (dateString: string) => {
+    const options: Intl.DateTimeFormatOptions = { day: '2-digit', month: '2-digit', year: 'numeric' };
+    return new Date(dateString).toLocaleDateString('pt-BR', options);
+  };
+
   return (
     <div>
       <Dialog>
@@ -94,22 +101,24 @@ const EditDialog: React.FC<EditDialogProps> = ({ postId }) => {
         </DialogTrigger>
 
         <DialogContent className="max-w-screen-lg w-full">
-          <DialogHeader className="flex items-center">
-            <DialogTitle>Editar Post</DialogTitle>
+          <DialogHeader className="fflex items-center border-b pb-5 border-slate-200">
+            <DialogTitle className="text-2xl">Editar Post</DialogTitle>
           </DialogHeader>
 
           <form className="space-y-6">
-            <div className="grid w-full gap-1.5">
+            <div className="mb-4">
               <Label htmlFor="Título">Título</Label>
               <Input
                 id="Título"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
                 disabled={loading}
+                placeholder="Título do post"
                 required
               />
             </div>
-            <div>
+
+            <div className="mb-4">
               <Label htmlFor="Conteúdo do Post">Conteúdo do Post</Label>
               <Textarea
                 id="Conteúdo do Post"
@@ -117,9 +126,24 @@ const EditDialog: React.FC<EditDialogProps> = ({ postId }) => {
                 onChange={(e) => setDescription(e.target.value)}
                 className="w-full h-64 border rounded-md p-2"
                 disabled={loading}
+                placeholder="Conteúdo do post"
                 required
               />
             </div>
+
+            <div>
+              <Label htmlFor="updateDate">Data de atualização</Label>
+              <Input
+                id="updateDate"
+                value={formatDate(updateDate)}
+                onChange={(e) => setUpdateDate(e.target.value)}
+                className="w-full p-2 border border-gray-300 rounded mt-1 cursor-pointer"
+                disabled={loading}
+                placeholder="dd/mm/aaaa"
+                required
+              />
+            </div>
+
             <DialogFooter className="flex justify-center w-full mt-4">
               <Button
                 type="submit"

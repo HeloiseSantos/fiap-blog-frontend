@@ -81,8 +81,8 @@ const NewDialog = () => {
                             </div>
 
                             <div className="mb-4">
-                                <Label>Descrição</Label>
-                                <Textarea placeholder="Descrição do post" value={description} className="w-full p-2 border border-gray-300 rounded mt-1" onChange={(e) => setDescription(e.target.value)} required />
+                                <Label>Conteúdo</Label>
+                                <Textarea placeholder="Conteúdo do post" value={description} className="w-full p-2 border border-gray-300 rounded mt-1" onChange={(e) => setDescription(e.target.value)} required />
                             </div>
 
                             <div className="mb-4">
