@@ -21,6 +21,7 @@ import Footer from "../Footer/Footer";
 import { Input } from "@/components/ui/input";
 import { useAuth0 } from "@auth0/auth0-react";
 import EditDialog from "../EditPost/EditDialog";
+import ViewPostDialog from "../ViewPost/ViewPostDialog";
 
 interface Post {
   _id: string;
@@ -206,7 +207,7 @@ const HomeContent = () => {
                 )}
 
                 {roles?.includes("Teacher") && <EditDialog postId={post._id} />}
-                <Button className="max-w-full">Acessar post</Button>
+                <ViewPostDialog postId={post._id} />
               </CardFooter>
             </Card>
           ))}
