@@ -193,14 +193,21 @@ const HomeContent = () => {
               <CardContent>
                 <p className="line-clamp-3">{post.description}</p>
               </CardContent>
-              <CardFooter>
+              <CardFooter className="flex flex-wrap justify-between">
+                
                 {roles.includes("Teacher") && (
                   <Button
                     variant="destructive"
                     className="max-w-full mr-4"
                     onClick={() => handleDeletePost(post._id)}
                   >
-                    Excluir
+                    Excluir post
+                  </Button>
+                )}
+
+                {roles.includes("Teacher") && (
+                  <Button variant="secondary" className="max-w-full mr-4">
+                    Editar post
                   </Button>
                 )}
                 <Button className="max-w-full">Acessar post</Button>
