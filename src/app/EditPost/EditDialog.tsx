@@ -17,14 +17,6 @@ interface EditDialogProps {
   postId: string;
 }
 
-interface Post {
-  title: String;
-  author: String;
-  description: String;
-  createDate: String;
-  updateDate: String;
-}
-
 const EditDialog: React.FC<EditDialogProps> = ({ postId }) => {
   const [title, setTitle] = useState<string>("");
   const [description, setDescription] = useState<string>("");
