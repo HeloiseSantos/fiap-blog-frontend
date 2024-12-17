@@ -95,7 +95,7 @@ const EditDialog: React.FC<EditDialogProps> = ({ postId }) => {
           </Button>
         </DialogTrigger>
 
-        <DialogContent className="max-w-screen-lg w-full">
+        <DialogContent className="max-w-screen-lg w-full overflow-scroll max-md:h-4/5">
           <DialogHeader className="fflex items-center border-b pb-5 border-slate-200">
             <DialogTitle className="text-2xl">Editar Post</DialogTitle>
           </DialogHeader>

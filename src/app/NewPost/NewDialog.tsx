@@ -66,7 +66,7 @@ const NewDialog = () => {
                         </Button>
                     </DialogTrigger>
 
-                    <DialogContent className="max-w-screen-lg w-full">
+                    <DialogContent className="max-w-screen-lg w-full overflow-scroll max-md:h-4/5">
                         <DialogHeader className="flex items-center">
                             <DialogTitle>Cadastrar novo post</DialogTitle>
                         </DialogHeader>
