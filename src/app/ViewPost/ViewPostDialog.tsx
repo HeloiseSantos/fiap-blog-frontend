@@ -63,38 +63,25 @@ const ViewPostDialog: React.FC<ViewPostDialogProps> = ({ postId }) => {
         </DialogTrigger>
 
         <DialogContent className="max-w-screen-lg w-full">
-          <DialogHeader className="flex items-center">
-            <DialogTitle>Detalhes do Post</DialogTitle>
+          <DialogHeader className="flex items-center border-b pb-5 border-slate-200">
+            <DialogTitle className="text-2xl">{title}</DialogTitle>
           </DialogHeader>
 
-          <form className="space-y-6">
-            <div className="grid w-full gap-1.5">
-              <Label htmlFor="title">Título</Label>
-              {title}
-            </div>
-            <div className="grid w-full gap-1.5">
-              <Label htmlFor="author">Autor</Label>
-              {author}
-            </div>
-            <div className="grid w-full gap-1.5">
-              <Label htmlFor="create-date">Data de criação</Label>
-              {createDate}
-            </div>
-            <div className="grid w-full gap-1.5">
-              <Label htmlFor="update-date">Data da última atualização</Label>
-              {updateDate}
-            </div>
-            <div>
-              <Label htmlFor="Conteúdo do Post">Conteúdo do Post</Label>
-              <Textarea
-                id="Conteúdo do Post"
-                value={description}
-                className="w-full h-64 border rounded-md p-2"
-                disabled={loading}
-                readOnly
-              />
-            </div>
-          </form>
+          <section>
+            <p className="mb-4">
+              <b>Autor:</b> {author} 
+            </p>
+
+            <p className="mb-4">
+              <b>Data de criação:</b> {createDate}
+            </p>
+
+            <p className="mb-4">
+              <b>Data da última atualização:</b> {updateDate}
+            </p>
+
+            <p>{description}</p>
+          </section>
         </DialogContent>
       </Dialog>
     </div>
