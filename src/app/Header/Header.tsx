@@ -3,9 +3,7 @@ import { Button } from "@/components/ui/button";
 import {
   NavigationMenu,
   NavigationMenuItem,
-  NavigationMenuLink,
   NavigationMenuList,
-  navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 import Link from "next/link";
 import { LogInIcon, LogOutIcon } from "lucide-react";
@@ -39,14 +37,6 @@ const Header: React.FC<HeaderProps> = ({ user, roles, isLoading }) => {
         <div>
           <NavigationMenu>
             <NavigationMenuList>
-              <NavigationMenuItem>
-                <Link href="/" legacyBehavior passHref>
-                  <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                    Posts
-                  </NavigationMenuLink>
-                </Link>
-              </NavigationMenuItem>
-
               {roles?.includes("Teacher") && (
                 <NavigationMenuItem>
                   <NewDialog />

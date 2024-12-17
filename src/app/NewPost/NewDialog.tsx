@@ -38,10 +38,13 @@ const NewDialog = () => {
                     updateDate,
                 }),
             });
+
             if (!response.ok) {
                 throw new Error(`Erro HTTP! Status: ${response.status}`);
             }
+
             alert("Post cadastrado com sucesso!");
+            
             window.location.reload();
         } catch (error) {
             if (error instanceof Error) {
@@ -58,7 +61,7 @@ const NewDialog = () => {
             <div>
                 <Dialog>
                     <DialogTrigger asChild>
-                        <Button variant="secondary" className="max-w-full mr-4">
+                        <Button variant="ghost" className="max-w-full hover:bg-gray-200 active:bg-gray-300 transition-colors">
                             Cadastrar novo post
                         </Button>
                     </DialogTrigger>
@@ -81,8 +84,8 @@ const NewDialog = () => {
                             </div>
 
                             <div className="mb-4">
-                                <Label>Descrição</Label>
-                                <Textarea placeholder="Descrição do post" value={description} className="w-full p-2 border border-gray-300 rounded mt-1" onChange={(e) => setDescription(e.target.value)} required />
+                                <Label>Conteúdo</Label>
+                                <Textarea placeholder="Conteúdo do post" value={description} className="w-full p-2 border border-gray-300 rounded mt-1" onChange={(e) => setDescription(e.target.value)} required />
                             </div>
 
                             <div className="mb-4">

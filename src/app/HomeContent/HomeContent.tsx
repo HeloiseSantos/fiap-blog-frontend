@@ -2,12 +2,6 @@ import React from "react";
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbList,
-  BreadcrumbPage,
-} from "@/components/ui/breadcrumb";
-import {
   Card,
   CardContent,
   CardDescription,
@@ -53,10 +47,13 @@ const HomeContent = () => {
         const response = await fetch(
           "https://fiap-blog-backend-latest.onrender.com/posts"
         );
+
         if (!response.ok) {
           throw new Error(`Erro HTTP! Status: ${response.status}`);
         }
+
         const data = await response.json();
+
         setPosts(data);
       } catch (error) {
         if (error instanceof Error) {
@@ -82,17 +79,29 @@ const HomeContent = () => {
 
       const response = await fetch(endpoint);
 
+      if(searchTerm.length === 0) {
+        alert("Digite um termo para pesquisar!");
+      }
+
       if (!response.ok) {
         throw new Error(`Erro HTTP! Status: ${response.status}`);
       }
+
       const data = await response.json();
       setPosts(data);
+
+      if(data.length === 0) {
+        alert("Nenhum post encontrado com o termo pesquisado!");
+
+        window.location.reload();
+      }
     } catch (error) {
       if (error instanceof Error) {
         setError(error.message);
       } else {
         setError("Ocorreu um erro desconhecido!");
       }
+
       console.error("Erro ao buscar posts:", error);
     } finally {
       setLoading(false);
@@ -138,7 +147,12 @@ const HomeContent = () => {
           method: "DELETE",
         }
       );
+
       setPosts(posts.filter((post) => post._id !== postId));
+
+      alert("Post excluído com sucesso!");
+
+      window.location.reload();
     } catch (error) {
       console.error("Erro ao excluir o post:", error);
     }
@@ -148,20 +162,13 @@ const HomeContent = () => {
     <div id="root">
       <Header user={user} roles={roles} isLoading={isLoading} />
 
-      <main className="mb-10 px-4">
-        <section className="flex items-center mb-10 mt-16 pt-10">
-          <p className="mr-2">Você está em: </p>
-          <Breadcrumb>
-            <BreadcrumbList>
-              <BreadcrumbItem>
-                <BreadcrumbPage>Posts</BreadcrumbPage>
-              </BreadcrumbItem>
-            </BreadcrumbList>
-          </Breadcrumb>
-        </section>
+      <section className="flex items-center mb-10 mt-14">
+        <img src="full-banner.jpg" alt="Banner" className="w-full"/>
+      </section>
 
+      <main className="mb-10 px-4">
         <section className="mb-10">
-          <h1 className="text-3xl font-bold">Posts cadastrados</h1>
+          <h1 className="text-3xl font-bold text-center">Posts cadastrados</h1>
         </section>
 
         <section className="mb-4">
@@ -177,7 +184,7 @@ const HomeContent = () => {
             <Button
               variant="secondary"
               onClick={handleClearSearch}
-              className="mr-4"
+              className="mr-4 hover:bg-gray-200 active:bg-gray-300 transition-colors"
             >
               Limpar
             </Button>
@@ -192,9 +199,11 @@ const HomeContent = () => {
                 <CardTitle className="truncate">{post.title}</CardTitle>
                 <CardDescription>{post.author}</CardDescription>
               </CardHeader>
+
               <CardContent>
                 <p className="line-clamp-3">{post.description}</p>
               </CardContent>
+
               <CardFooter className="flex flex-wrap justify-between">
                 {roles?.includes("Teacher") && (
                   <Button
@@ -207,13 +216,13 @@ const HomeContent = () => {
                 )}
 
                 {roles?.includes("Teacher") && <EditDialog postId={post._id} />}
+
                 <ViewPostDialog postId={post._id} />
               </CardFooter>
             </Card>
           ))}
         </section>
       </main>
-
       <Footer />
     </div>
   );
