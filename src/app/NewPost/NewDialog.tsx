@@ -58,7 +58,7 @@ const NewDialog = () => {
             <div>
                 <Dialog>
                     <DialogTrigger asChild>
-                        <Button variant="ghost" className="max-w-full mr-4 hover:bg-gray-200 active:bg-gray-300 transition-colors">
+                        <Button variant="ghost" className="max-w-full ml-1 hover:bg-gray-200 active:bg-gray-300 transition-colors">
                             Cadastrar novo post
                         </Button>
                     </DialogTrigger>
