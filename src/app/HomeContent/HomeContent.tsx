@@ -142,13 +142,13 @@ const HomeContent = () => {
     <div id="root">
       <Header user={user} roles={roles} isLoading={isLoading} />
 
-      <section className="flex items-center mb-10 mt-16">
+      <section className="flex items-center mb-10 mt-14">
         <img src="full-banner.jpg" alt="Banner" className="w-full"/>
       </section>
 
       <main className="mb-10 px-4">
         <section className="mb-10">
-          <h1 className="text-3xl font-bold">Posts cadastrados</h1>
+          <h1 className="text-3xl font-bold text-center">Posts cadastrados</h1>
         </section>
 
         <section className="mb-4">
