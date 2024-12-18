@@ -11,6 +11,7 @@ Este é um projeto desenvolvido para o Tech Challenge da terceira fase do curso 
 - [Shadcn](https://ui.shadcn.com/)
 - [Lucide React](https://lucide.dev/)
 - [Render](https://render.com/)
+- [Auth0](https://auth0.com/)
 
 ## 💻 Pré-requisitos
 
