@@ -61,7 +61,7 @@ Veja intruções para rodar o projeto no próprio README do mesmo.
 
 # No projeto front-end 
 - Acessar o seguinte diretório src\app\page.tsx;
-- Na linha 39, alterar a URL do método fetch de https://fiap-blog-backend-latest.onrender.com/posts para http://localhost:3001/posts
+- Na linha 39, alterar a URL de https://fiap-blog-backend-latest.onrender.com/posts para http://localhost:3001/posts
 ```
 
 ## 🌐 Publicação (Deploy)
