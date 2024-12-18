@@ -19,7 +19,6 @@ const ViewPostDialog: React.FC<ViewPostDialogProps> = ({ postId }) => {
   const [description, setDescription] = useState<string>("");
   const [createDate, setCreateDate] = useState<string>("");
   const [updateDate, setUpdateDate] = useState<string>("");
-  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     const fetchPost = async () => {
@@ -36,10 +35,8 @@ const ViewPostDialog: React.FC<ViewPostDialogProps> = ({ postId }) => {
         setCreateDate(post.createDate);
         setUpdateDate(post.updateDate);
         
-        setLoading(false);
       } catch (error) {
         console.error("Erro ao recuperar o post:", error);
-        setLoading(false);
       }
     };
 
