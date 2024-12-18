@@ -90,12 +90,12 @@ const EditDialog: React.FC<EditDialogProps> = ({ postId }) => {
     <div>
       <Dialog>
         <DialogTrigger asChild>
-          <Button variant="secondary" className="max-w-full mr-4 hover:bg-gray-200 active:bg-gray-300 transition-colors">
-            Editar post
+          <Button variant="secondary" className="max-w-full mr-4 hover:bg-gray-200 active:bg-gray-300 transition-colors max-lg:mr-0 max-lg:mb-4">
+            Editar
           </Button>
         </DialogTrigger>
 
-        <DialogContent className="max-w-screen-lg w-full">
+        <DialogContent className="max-w-screen-lg w-full max-md:overflow-scroll h-full max-md:h-4/5">
           <DialogHeader className="fflex items-center border-b pb-5 border-slate-200">
             <DialogTitle className="text-2xl">Editar Post</DialogTitle>
           </DialogHeader>

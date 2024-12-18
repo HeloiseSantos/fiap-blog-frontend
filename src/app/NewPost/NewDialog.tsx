@@ -66,7 +66,7 @@ const NewDialog = () => {
                         </Button>
                     </DialogTrigger>
 
-                    <DialogContent className="max-w-screen-lg w-full">
+                    <DialogContent className="max-w-screen-lg w-full max-md:overflow-scroll h-full max-md:h-4/5">
                         <DialogHeader className="flex items-center">
                             <DialogTitle>Cadastrar novo post</DialogTitle>
                         </DialogHeader>
@@ -85,31 +85,33 @@ const NewDialog = () => {
 
                             <div className="mb-4">
                                 <Label>Conteúdo</Label>
-                                <Textarea placeholder="Conteúdo do post" value={description} className="w-full p-2 border border-gray-300 rounded mt-1" onChange={(e) => setDescription(e.target.value)} required />
+                                <Textarea placeholder="Conteúdo do post" value={description} className="w-full h-64 p-2 border border-gray-300 rounded mt-1" onChange={(e) => setDescription(e.target.value)} required />
                             </div>
 
-                            <div className="mb-4">
-                                <Label htmlFor="createDate">Data de criação</Label>
-                                <Input
-                                    type="date"
-                                    id="createDate"
-                                    value={createDate}
-                                    onChange={(e) => setCreateDate(e.target.value)}
-                                    className="w-full p-2 border border-gray-300 rounded mt-1 cursor-pointer"
-                                    required
-                                />
-                            </div>
+                            <div className="flex">
+                                <div className="mb-4 mr-4 w-full">
+                                    <Label htmlFor="createDate">Data de criação</Label>
+                                    <Input
+                                        type="date"
+                                        id="createDate"
+                                        value={createDate}
+                                        onChange={(e) => setCreateDate(e.target.value)}
+                                        className="w-full p-2 border border-gray-300 rounded mt-1 cursor-pointer"
+                                        required
+                                    />
+                                </div>
 
-                            <div className="mb-4">
-                                <Label htmlFor="updateDate">Data de atualização</Label>
-                                <Input
-                                    type="date"
-                                    id="updateDate"
-                                    value={updateDate}
-                                    onChange={(e) => setUpdateDate(e.target.value)}
-                                    className="w-full p-2 border border-gray-300 rounded mt-1 cursor-pointer"
-                                    required
-                                />
+                                <div className="mb-4 w-full">
+                                    <Label htmlFor="updateDate">Data de atualização</Label>
+                                    <Input
+                                        type="date"
+                                        id="updateDate"
+                                        value={updateDate}
+                                        onChange={(e) => setUpdateDate(e.target.value)}
+                                        className="w-full p-2 border border-gray-300 rounded mt-1 cursor-pointer"
+                                        required
+                                    />
+                                </div>
                             </div>
 
                             <DialogFooter className="flex justify-center w-full mt-4">

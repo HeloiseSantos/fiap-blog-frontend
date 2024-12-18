@@ -162,33 +162,36 @@ const HomeContent = () => {
     <div id="root">
       <Header user={user} roles={roles} isLoading={isLoading} />
 
-      <section className="flex items-center mb-10 mt-14">
+      <section className="flex items-center mb-10 mt-14 max-md:hidden">
         <img src="full-banner.jpg" alt="Banner" className="w-full"/>
       </section>
 
-      <main className="mb-10 px-4">
+      <main className="mb-10 px-4 max-md:mt-44">
         <section className="mb-10">
           <h1 className="text-3xl font-bold text-center">Posts cadastrados</h1>
         </section>
 
         <section className="mb-4">
-          <div className="flex items-center">
+          <div className="flex items-center max-md:flex-col">
             <Input
               type="text"
               placeholder="Digite o título do post que deseja encontrar"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full p-4 border border-gray-300 rounded mr-4"
+              className="w-full p-4 border border-gray-300 rounded mr-4 max-md:mr-0"
             />
 
-            <Button
-              variant="secondary"
-              onClick={handleClearSearch}
-              className="mr-4 hover:bg-gray-200 active:bg-gray-300 transition-colors"
-            >
-              Limpar
-            </Button>
-            <Button onClick={handleSearch}>Buscar</Button>
+            <div className="flex items-center max-md:pt-4 max-md:w-full">
+              <Button
+                variant="secondary"
+                onClick={handleClearSearch}
+                className="mr-4 hover:bg-gray-200 active:bg-gray-300 transition-colors max-md:w-full"
+              >
+                Limpar
+              </Button>
+
+              <Button onClick={handleSearch} className="max-md:w-full">Buscar</Button>
+            </div>
           </div>
         </section>
 
@@ -204,14 +207,14 @@ const HomeContent = () => {
                 <p className="line-clamp-3">{post.description}</p>
               </CardContent>
 
-              <CardFooter className="flex flex-wrap justify-between">
+              <CardFooter className="flex justify-between max-lg:flex-col-reverse max-lg:w-full">
                 {roles?.includes("Teacher") && (
                   <Button
                     variant="destructive"
-                    className="max-w-full mr-4"
+                    className="max-w-full mr-4 max-lg:mr-0"
                     onClick={() => handleDeletePost(post._id)}
                   >
-                    Excluir post
+                    Excluir
                   </Button>
                 )}
 

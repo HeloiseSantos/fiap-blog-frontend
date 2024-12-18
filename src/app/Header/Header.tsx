@@ -20,7 +20,7 @@ const Header: React.FC<HeaderProps> = ({ user, roles, isLoading }) => {
   const { loginWithRedirect, logout } = useAuth0();
 
   return (
-    <header className="h-16 border-b border-slate-200 shadow-md flex items-center justify-between px-4">
+    <header className="h-16 border-b border-slate-200 shadow-md flex items-center justify-between px-4 max-md:flex-col max-md:h-36">
       <div>
         <Link href="/" legacyBehavior passHref>
           Blog educacional
@@ -33,7 +33,7 @@ const Header: React.FC<HeaderProps> = ({ user, roles, isLoading }) => {
         </div>
       )}
 
-      <nav className="flex items-center space-x-4">
+      <nav className="flex items-center space-x-4 max-md:mt-4">
         <div>
           <NavigationMenu>
             <NavigationMenuList>
