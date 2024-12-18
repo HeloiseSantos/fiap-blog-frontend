@@ -162,11 +162,11 @@ const HomeContent = () => {
     <div id="root">
       <Header user={user} roles={roles} isLoading={isLoading} />
 
-      <section className="flex items-center mb-10 mt-14">
+      <section className="flex items-center mb-10 mt-14 max-md:hidden">
         <img src="full-banner.jpg" alt="Banner" className="w-full"/>
       </section>
 
-      <main className="mb-10 px-4">
+      <main className="mb-10 px-4 max-md:mt-44">
         <section className="mb-10">
           <h1 className="text-3xl font-bold text-center">Posts cadastrados</h1>
         </section>
