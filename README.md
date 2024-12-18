@@ -1,6 +1,6 @@
 # Front-end FIAP Blog
 
-Este é um projeto desenvolvido para o Tech Challenge da terceira fase do curso de pós graduação em desenvolvimento full stack da universidade FIAP. O mesmo consiste na criação de uma Interface front-end em Next.js para o gerenciamento de um blogging educacional dinâmico, que possibilita aos professores a possibilidade de listar, criar, editar e excluir posts e aos alunos visualizar a lista de posts cadastrados e ler posts específicas escolhidos por eles.
+Este é um projeto desenvolvido para o Tech Challenge da terceira fase do curso de pós graduação em desenvolvimento full stack da universidade FIAP. O mesmo consiste na criação de uma Interface front-end em Next.js para o gerenciamento de um blogging educacional dinâmico, que possibilita aos professores a possibilidade de listar, criar, editar e excluir posts e aos alunos visualizar a lista de posts cadastrados e ler posts específicos escolhidos por eles.
 
 ## 🛠️ Tecnologias utilizadas
 
@@ -10,7 +10,7 @@ Este é um projeto desenvolvido para o Tech Challenge da terceira fase do curso 
 - [Tailwind CSS](https://tailwindcss.com/)
 - [Shadcn](https://ui.shadcn.com/)
 - [Lucide React](https://lucide.dev/)
-- [Render ou Vercel (verificar qual utilizaremos)](https://vercel.com/home)
+- [Render](https://render.com/)
 
 ## 💻 Pré-requisitos
 
@@ -61,14 +61,14 @@ Veja intruções para rodar o projeto no próprio README do mesmo.
 
 # No projeto front-end 
 - Acessar o seguinte diretório src\app\page.tsx;
-- Na linha 39, alterar a URL do método fetch de https://fiap-blog-backend-latest.onrender.com/posts para http://localhost:3000/posts
+- Na linha 39, alterar a URL do método fetch de https://fiap-blog-backend-latest.onrender.com/posts para http://localhost:3001/posts
 ```
 
 ## 🌐 Publicação (Deploy)
 
 A interface do projeto está publicada e disponível para uso no seguinte endereço:
 
-(verificar endereço e substituir este texto pelo link)
+https://fiap-blog-frontend-latest.onrender.com/
 
 ## 🧑🏻‍💻👩🏻‍💻 Colaboradores
 
